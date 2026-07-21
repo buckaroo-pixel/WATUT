@@ -20,18 +20,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Clone CoroUtil
-        run: |
-          git clone --branch 1.21.11 --depth 1 https://github.com/Brskt/CoroUtil.git ../CoroUtil || \
-          git clone --branch 1.21 --depth 1 https://github.com/Brskt/CoroUtil.git ../CoroUtil || \
-          git clone --depth 1 https://github.com/Brskt/CoroUtil.git ../CoroUtil
-
-      - name: Build CoroUtil (Fabric) and publish to mavenLocal
-        working-directory: ../CoroUtil
-        run: ./gradlew -b build_fabric.gradle publishToMavenLocal
-
       - name: Build WATUT (Fabric)
-        run: ./gradlew -b build_fabric.gradle build
+        run: ./gradlew -b build_fabric.gradle build --no-daemon
 
       - name: Upload Fabric JAR
         uses: actions/upload-artifact@v4
@@ -55,10 +45,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Clone CoroUtil
-        run: |
-          git clone --branch 1.21.11 --depth 1 https://github.com/Brskt/CoroUtil.git ../CoroUtil || \
-          git clone --branch 1.21 --depth 1 https://github.com/Brskt/CoroUtil.git ../CoroUtil || \
-          git clone --depth 1 https://github.com/Brskt/CoroUtil.git ../CoroUtil
+        run: git clone --branch 1.21.11 --depth 1 https://github.com/Brskt/CoroUtil.git ../CoroUtil
 
       - name: Build CoroUtil (NeoForge) and publish to mavenLocal
         working-directory: ../CoroUtil

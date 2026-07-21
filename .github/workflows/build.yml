@@ -21,7 +21,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Clone CoroUtil
-        run: git clone --branch 1.21.11 --depth 1 https://github.com/Brskt/CoroUtil.git ../CoroUtil
+        run: git clone --depth 1 https://github.com/Brskt/CoroUtil.git ../CoroUtil
 
       - name: Build CoroUtil (Fabric) and publish to mavenLocal
         working-directory: ../CoroUtil
@@ -52,7 +52,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Clone CoroUtil
-        run: git clone --branch 1.21.11 --depth 1 https://github.com/Brskt/CoroUtil.git ../CoroUtil
+        run: git clone --depth 1 https://github.com/Brskt/CoroUtil.git ../CoroUtil
 
       - name: Build CoroUtil (NeoForge) and publish to mavenLocal
         working-directory: ../CoroUtil

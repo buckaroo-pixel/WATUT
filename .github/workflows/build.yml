@@ -23,6 +23,12 @@ jobs:
       - name: Clone CoroUtil
         run: git clone --branch 1.21.11 --depth 1 https://github.com/Brskt/CoroUtil.git ../CoroUtil
 
+      - name: Patch CoroUtil Gradle Repositories
+        working-directory: ../CoroUtil
+        run: |
+          # Вставляем репозиторий Modrinth в самое начало блока repositories
+          sed -i "s|repositories {|repositories {\n    maven { url 'https://api.modrinth.com/maven' }|g" build_fabric.gradle
+
       - name: Publish Fabric CoroUtil to mavenLocal
         working-directory: ../CoroUtil
         run: ./gradlew -b build_fabric.gradle publishToMavenLocal

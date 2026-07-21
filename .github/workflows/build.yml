@@ -23,11 +23,9 @@ jobs:
       - name: Clone CoroUtil
         run: git clone --branch 1.21.11 --depth 1 https://github.com/Brskt/CoroUtil.git ../CoroUtil
 
-      - name: Build CoroUtil (Fabric & NeoForge) and publish to mavenLocal
+      - name: Publish CoroUtil to mavenLocal
         working-directory: ../CoroUtil
-        run: |
-          ./gradlew publishToMavenLocal
-          ./gradlew -b build_neoforge.gradle publishToMavenLocal || true
+        run: ./gradlew -b build_neoforge.gradle publishToMavenLocal
 
       - name: Build WATUT (Fabric)
         run: ./gradlew -b build_fabric.gradle build
